@@ -56,8 +56,9 @@ def valida_login(request):
     nome = request.POST.get('nome')
     senha = request.POST.get('senha')
 
-    usuario = auth.authenticate(request, username = nome, password = senha)
-
+    usuario = auth.authenticate(username = nome, password = senha)
+    print(usuario)
+    
     if not usuario:
         messages.add_message(request, constants.ERROR, 'Email ou senha inválidos')
         return redirect('/auth/login/')
